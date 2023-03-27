@@ -1,22 +1,11 @@
 package com.tresenraya.dao;
-
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.tresenraya.entidad.Score;
 
 @Repository
 public class JuegoDaoImp implements JuegoDao {
-	
-	@Autowired
-	private SessionFactory sf;
 	
 	public static String nombre;
 	public static String btn1;
@@ -30,17 +19,6 @@ public class JuegoDaoImp implements JuegoDao {
 	public static String btn9;
 
 	@Override
-	@Transactional
-	public List<Score> getScores() {
-		
-		Session sn = sf.getCurrentSession();
-		Query<Score> query = sn.createQuery("FROM Score",Score.class);
-		List<Score> scores = query.getResultList();
-		
-		return scores;
-	}
-
-	@Override
 	public String turno() {
 		
 		String turno;
@@ -49,7 +27,7 @@ public class JuegoDaoImp implements JuegoDao {
 		if(numero == 1) {
 			turno = "jugador";
 		} else {
-			turno = "computadora";
+			turno = "rival";
 		}
 		return turno;
 	}
@@ -71,7 +49,7 @@ public class JuegoDaoImp implements JuegoDao {
 		
 		String jugada;
 		
-		if (turno.equals("computadora")) {
+		if (turno.equals("rival")) {
 			
 			jugada = "X";
 		} else {
@@ -87,10 +65,10 @@ public class JuegoDaoImp implements JuegoDao {
 		
 		String cambioTurno;
 		
-		if (turno.equals("computadora")) {
+		if (turno.equals("rival")) {
 			cambioTurno = "jugador";
 		} else {
-			cambioTurno = "computadora";
+			cambioTurno = "rival";
 		}
 		return cambioTurno;
 	}
@@ -107,6 +85,66 @@ public class JuegoDaoImp implements JuegoDao {
 		btn7 = null;
 		btn8 = null;
 		btn9 = null;
+	}
+	
+	@Override
+	public List<String> filtrarBotones(String btn1,String btn2,String btn3,
+										String btn4,String btn5,String btn6,
+										String btn7,String btn8,String btn9) {
+		
+		List<String> botones = new ArrayList<>();
+		if (btn1 == null) btn1 = "";
+		if (btn2 == null) btn2 = "";
+		if (btn3 == null) btn3 = "";
+		if (btn4 == null) btn4 = "";
+		if (btn5 == null) btn5 = "";
+		if (btn6 == null) btn6 = "";
+		if (btn7 == null) btn7 = "";
+		if (btn8 == null) btn8 = "";
+		if (btn9 == null) btn9 = "";
+		botones.add(btn1);
+		botones.add(btn2);
+		botones.add(btn3);
+		botones.add(btn4);
+		botones.add(btn5);
+		botones.add(btn6);
+		botones.add(btn7);
+		botones.add(btn8);
+		botones.add(btn9);
+
+		return botones;
+	}
+	
+	@Override
+	public String verificarGanador(String turno) {
+		
+		List<String> botones = filtrarBotones(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9);
+		
+		if (turno.equals("computadora")) {
+				
+			if (botones.get(0).equals("X") && botones.get(3).equals("X") && botones.get(6).equals("X")) return new String("X");
+			else if (botones.get(0).equals("X") && botones.get(1).equals("X") && botones.get(2).equals("X")) return new String("X");
+			else if (botones.get(2).equals("X") && botones.get(5).equals("X") && botones.get(8).equals("X")) return new String("X");
+			else if (botones.get(6).equals("X") && botones.get(7).equals("X") && botones.get(8).equals("X")) return new String("X");
+			else if (botones.get(3).equals("X") && botones.get(4).equals("X") && botones.get(5).equals("X")) return new String("X");
+			else if (botones.get(1).equals("X") && botones.get(4).equals("X") && botones.get(7).equals("X")) return new String("X");
+			else if (botones.get(0).equals("X") && botones.get(4).equals("X") && botones.get(8).equals("X")) return new String("X");
+			else if (botones.get(2).equals("X") && botones.get(4).equals("X") && botones.get(6).equals("X")) return new String("X");
+			else return new String("sin ganador");
+			
+		} else {
+				
+			if (botones.get(0).equals("O") && botones.get(3).equals("O") && botones.get(6).equals("O")) return new String("O");
+			else if (botones.get(0).equals("O") && botones.get(1).equals("O") && botones.get(2).equals("O")) return new String("O");
+			else if (botones.get(2).equals("O") && botones.get(5).equals("O") && botones.get(8).equals("O")) return new String("O");
+			else if (botones.get(6).equals("O") && botones.get(7).equals("O") && botones.get(8).equals("O")) return new String("O");
+			else if (botones.get(3).equals("O") && botones.get(4).equals("O") && botones.get(5).equals("O")) return new String("O");
+			else if (botones.get(1).equals("O") && botones.get(4).equals("O") && botones.get(7).equals("O")) return new String("O");
+			else if (botones.get(0).equals("O") && botones.get(4).equals("O") && botones.get(8).equals("O")) return new String("O");
+			else if (botones.get(2).equals("O") && botones.get(4).equals("O") && botones.get(6).equals("O")) return new String("O");
+			else return new String("sin ganador");
+			
+		}
 	}
 
 	@Override

@@ -14,12 +14,13 @@ public class Tablero {
 	private String btn7;
 	private String btn8;
 	private String btn9;
+	private String ganador;
 	
 	public Tablero() {
 	}
 
 	public Tablero(String boton, String turno, String nombre, String btn1, String btn2, String btn3, String btn4,
-			String btn5, String btn6, String btn7, String btn8, String btn9) {
+			String btn5, String btn6, String btn7, String btn8, String btn9, String ganador) {
 		this.boton = boton;
 		this.turno = turno;
 		this.nombre = nombre;
@@ -32,13 +33,14 @@ public class Tablero {
 		this.btn7 = btn7;
 		this.btn8 = btn8;
 		this.btn9 = btn9;
+		this.ganador = ganador;
 	}
 
 	@Override
 	public String toString() {
 		return "Tablero [boton=" + boton + ", turno=" + turno + ", nombre=" + nombre + ", btn1=" + btn1 + ", btn2="
 				+ btn2 + ", btn3=" + btn3 + ", btn4=" + btn4 + ", btn5=" + btn5 + ", btn6=" + btn6 + ", btn7=" + btn7
-				+ ", btn8=" + btn8 + ", btn9=" + btn9 + "]";
+				+ ", btn8=" + btn8 + ", btn9=" + btn9 + ", ganador=" + ganador + "]";
 	}
 
 	public String getBoton() {
@@ -135,5 +137,13 @@ public class Tablero {
 
 	public void setBtn9(String btn9) {
 		this.btn9 = btn9;
+	}
+
+	public String getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(String ganador) {
+		this.ganador = ganador;
 	}
 }

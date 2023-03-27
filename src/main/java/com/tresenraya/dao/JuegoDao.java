@@ -2,11 +2,7 @@ package com.tresenraya.dao;
 
 import java.util.List;
 
-import com.tresenraya.entidad.Score;
-
 public interface JuegoDao {
-
-	public List<Score> getScores();
 	
 	public void guardarUsuario(String usuario);
 	
@@ -19,6 +15,12 @@ public interface JuegoDao {
 	public void reiniciar();
 	
 	public String cambiarTurno(String turno);
+	
+	public List<String> filtrarBotones(String btn1,String btn2,String btn3,
+										String btn4,String btn5,String btn6,
+										String btn7,String btn8,String btn9);
+	
+	public String verificarGanador(String turno);
 	
 	public String btn1(String jugada);
 	

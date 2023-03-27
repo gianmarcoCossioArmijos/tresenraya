@@ -21,7 +21,7 @@ body {
    width: 700px;
    height: 570px;
    border: 2px solid white;
-   background: linear-gradient(180deg, rgba(66,0,73,1) 0%, rgba(5,0,40,1) 100%);
+   background-image: url("https://getwallpapers.com/wallpaper/full/3/0/f/718596-dark-purple-backgrounds-1920x1200-full-hd.jpg");
    border-collapse: collapse;
    border-radius: 30px;
    margin: auto;
@@ -29,6 +29,10 @@ body {
 
 .formulario{
 	text-align: center;
+}
+
+.nombre {
+	font-weight: bold;
 }
 
 .input {
@@ -47,6 +51,7 @@ body {
 	color: black;
 	background-color: #7dff00;
 	border-radius: 8px;
+	font-weight: bold;
 }
 
 .logo {
@@ -70,7 +75,7 @@ body {
 	
 		<form class="formulario" action="/tresenraya/tablero" method="get">
 		
-			<label>Imgrese su nombre:</label><br><br><br>
+			<label class="nombre">Imgrese su nombre:</label><br><br><br>
 			<input class="input" type="text" name="nombre"/><br><br><br><br>
 			
 			<input class="boton" type="submit" value="Continuar"><br><br>

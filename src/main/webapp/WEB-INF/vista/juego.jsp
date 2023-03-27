@@ -24,8 +24,7 @@ body {
 	width: 700px;
 	height: 570px;
 	border: 2px solid white;
-	background: linear-gradient(180deg, rgba(66, 0, 73, 1) 0%,
-		rgba(5, 0, 40, 1) 100%);
+	background-image: url("https://getwallpapers.com/wallpaper/full/3/0/f/718596-dark-purple-backgrounds-1920x1200-full-hd.jpg");
 	border-collapse: collapse;
 	border-radius: 30px;
 	margin: auto;
@@ -67,6 +66,15 @@ body {
 	color: black;
 	background-color: #7dff00;
 	border-radius: 8px;
+	font-weight: bold;
+}
+
+.ganador {
+	display: inline-block;
+	font-size: 20px;
+	width: 370px;
+	height: 20px;
+	text-align: center;
 }
 </style>
 </head>
@@ -181,16 +189,23 @@ body {
 				</c:choose>
 
 			</div>
+			
+			<c:choose>
+				<c:when test="${tablero.ganador == null}">
+					<h3 class="ganador"></h3>
+				</c:when>
+				<c:otherwise>
+					<h3 class="ganador">${tablero.ganador}</h3>
+				</c:otherwise>
+			</c:choose>
 
 			<c:choose>
 				<c:when test="${tablero.boton == 'reiniciar'}">
-					<input class="boton_juego" type="button" name="boton" id="boton"
-						value="Reiniciar"
+					<input class="boton_juego" type="button" name="boton" id="boton" value="Reiniciar"
 						onclick="formulario.action='/tresenraya/reiniciar';formulario.method='get';formulario.submit()" />
 				</c:when>
 				<c:otherwise>
-					<input class="boton_juego" type="button" name="boton" id="boton"
-						value="Jugar"
+					<input class="boton_juego" type="button" name="boton" id="boton" value="Jugar"
 						onclick="formulario.action='/tresenraya/iniciar';formulario.method='get';formulario.submit()" />
 				</c:otherwise>
 			</c:choose>

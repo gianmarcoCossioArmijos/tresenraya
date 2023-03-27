@@ -28,7 +28,7 @@ public class Controlador {
 	public String usuario(@RequestParam("nombre")String name,Model modelo) {
 		
 		juegoDao.guardarUsuario(name);
-		Tablero tablero = new Tablero(null,null,juegoDao.usuario(),null,null,null,null,null,null,null,null,null);
+		Tablero tablero = new Tablero(null,null,juegoDao.usuario(),null,null,null,null,null,null,null,null,null,null);
 		modelo.addAttribute("tablero", tablero);
 		
 		return "juego";
@@ -38,7 +38,7 @@ public class Controlador {
 	public String reiniciar(Model modelo) {
 		
 		juegoDao.reiniciar();
-		Tablero tablero = new Tablero(null,null,juegoDao.usuario(),null,null,null,null,null,null,null,null,null);
+		Tablero tablero = new Tablero(null,null,juegoDao.usuario(),null,null,null,null,null,null,null,null,null,null);
 		modelo.addAttribute("tablero", tablero);
 		
 		return "juego";
@@ -47,7 +47,7 @@ public class Controlador {
 	@GetMapping("/iniciar")
 	public String iniciar(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
-		Tablero juego = new Tablero("reiniciar",juegoDao.turno(),juegoDao.usuario(),null,null,null,null,null,null,null,null,null);
+		Tablero juego = new Tablero("reiniciar",juegoDao.turno(),juegoDao.usuario(),null,null,null,null,null,null,null,null,null,null);
 		modelo.addAttribute("tablero", juego);
 		
 		return "juego";
@@ -56,9 +56,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn1")
 	public String jugarBtn1(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
 		juegoDao.btn1(jugada);
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -70,7 +83,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -79,9 +93,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn2")
 	public String jugarBtn2(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		juegoDao.btn2(jugada);
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -93,7 +120,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -102,9 +130,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn3")
 	public String jugarBtn3(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		juegoDao.btn3(jugada);
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -116,7 +157,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -125,9 +167,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn4")
 	public String jugarBtn4(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
 		juegoDao.btn4(jugada);
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -139,7 +194,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -148,9 +204,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn5")
 	public String jugarBtn5(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
 		juegoDao.btn5(jugada);
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -162,7 +231,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -171,9 +241,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn6")
 	public String jugarBtn6(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
 		juegoDao.btn6(jugada);
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -185,7 +268,8 @@ public class Controlador {
 									jugada,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -194,9 +278,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn7")
 	public String jugarBtn7(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
 		juegoDao.btn7(jugada);
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -208,7 +305,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									jugada,
 									JuegoDaoImp.btn8,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -217,9 +315,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn8")
 	public String jugarBtn8(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
 		juegoDao.btn8(jugada);
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+		
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -231,7 +342,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									jugada,
-									JuegoDaoImp.btn9);
+									JuegoDaoImp.btn9,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
@@ -240,9 +352,22 @@ public class Controlador {
 	@GetMapping("/jugarBtn9")
 	public String jugarBtn9(@ModelAttribute("tablero") Tablero tablero, Model modelo) {
 		
+		String ganador;
 		String jugada = juegoDao.jugar(tablero.getTurno());
 		juegoDao.btn9(jugada);
+		String resultado = juegoDao.verificarGanador(tablero.getTurno());
 		String turno = juegoDao.cambiarTurno(tablero.getTurno());
+		
+		if (resultado.equals("X")) {
+			
+			ganador = "El rival ha ganado!";
+		} else if (resultado .equals("O")) {
+			
+			ganador = juegoDao.usuario() + " ha ganado!";
+		} else {
+			ganador = null;
+		}
+
 		Tablero juego = new Tablero("reiniciar",
 									turno,
 									juegoDao.usuario(),
@@ -254,7 +379,8 @@ public class Controlador {
 									JuegoDaoImp.btn6,
 									JuegoDaoImp.btn7,
 									JuegoDaoImp.btn8,
-									jugada);
+									jugada,
+									ganador);
 		modelo.addAttribute("tablero",juego);
 		
 		return "juego";
