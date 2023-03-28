@@ -120,7 +120,7 @@ public class JuegoDaoImp implements JuegoDao {
 		
 		List<String> botones = filtrarBotones(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9);
 		
-		if (turno.equals("computadora")) {
+		if (turno.equals("rival")) {
 				
 			if (botones.get(0).equals("X") && botones.get(3).equals("X") && botones.get(6).equals("X")) return new String("X");
 			else if (botones.get(0).equals("X") && botones.get(1).equals("X") && botones.get(2).equals("X")) return new String("X");

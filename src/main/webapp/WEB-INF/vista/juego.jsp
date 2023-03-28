@@ -102,9 +102,13 @@ body {
 					<c:when test="${tablero.btn1 != null}">
 						<input class="boton" type="button" name="btn1" value="${tablero.btn1}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn1 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn1" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn1';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn1';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn1" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -112,9 +116,13 @@ body {
 					<c:when test="${tablero.btn2 != null}">
 						<input class="boton" type="button" name="btn2" value="${tablero.btn2}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn2 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn2" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn2';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn2';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn2" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -122,9 +130,13 @@ body {
 					<c:when test="${tablero.btn3 != null}">
 						<input class="boton" type="button" name="btn3" value="${tablero.btn3}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn3 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn3" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn3';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn3';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn3" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -132,9 +144,13 @@ body {
 					<c:when test="${tablero.btn4 != null}">
 						<input class="boton" type="button" name="btn4" value="${tablero.btn4}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn4 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn4" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn4';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn4';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn4" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -142,9 +158,13 @@ body {
 					<c:when test="${tablero.btn5 != null}">
 						<input class="boton" type="button" name="btn5" value="${tablero.btn5}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn5 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn5" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn5';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn5';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn5" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -152,9 +172,13 @@ body {
 					<c:when test="${tablero.btn6 != null}">
 						<input class="boton" type="button" name="btn6" value="${tablero.btn6}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn6 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn6" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn6';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn6';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn6" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -162,9 +186,13 @@ body {
 					<c:when test="${tablero.btn7 != null}">
 						<input class="boton" type="button" name="btn7" value="${tablero.btn7}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn7 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn7" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn7';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn7';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn7" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -172,9 +200,13 @@ body {
 					<c:when test="${tablero.btn8 != null}">
 						<input class="boton" type="button" name="btn8" value="${tablero.btn8}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn8 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn8" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn8';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn8';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn8" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
@@ -182,9 +214,13 @@ body {
 					<c:when test="${tablero.btn9 != null}">
 						<input class="boton" type="button" name="btn9" value="${tablero.btn9}"/>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${tablero.btn9 == null && tablero.turno != null}">
 						<input class="boton" type="button" name="btn9" value="+"
-						onclick="formulario.action='/tresenraya/jugarBtn9';formulario.method='get';formulario.modelAttribute='tablero';formulario.submit()" />
+						onclick="formulario.action='/tresenraya/jugarBtn9';formulario.method='get';
+						formulario.modelAttribute='tablero';formulario.submit()" />
+					</c:when>
+					<c:otherwise>
+						<input class="boton" type="button" name="btn9" value="+"/>
 					</c:otherwise>
 				</c:choose>
 
